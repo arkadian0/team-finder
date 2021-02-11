@@ -4,5 +4,5 @@ import com.teamfinder.game.common.response.TfResult;
 import com.teamfinder.game.person.application.api.response.dto.PersonInfoDto;
 
 public interface PersonQueryPort {
-    TfResult<PersonInfoDto> getPlayerInfoById(Long playerId);
+    PersonInfoDto getPlayerInfoById(Long playerId);
 }

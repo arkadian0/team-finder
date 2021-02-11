@@ -20,13 +20,12 @@ class PersonQueryAdapter implements PersonQueryPort {
     }
 
     @Override
-    public TfResult<PersonInfoDto> getPlayerInfoById(Long playerId) {
+    public PersonInfoDto getPlayerInfoById(Long playerId) {
         Optional<Person> player = personDatabasePort.getPlayerById(playerId);
         if (player.isPresent()) {
-            PersonInfoDto personInfoDto = PersonMapper.map(player.get());
-            return new TfResult<>(personInfoDto);
+            return PersonMapper.map(player.get());
         } else {
-            return new TfResult<>(List.of("Użytkownik o Id: " + playerId + " nie istnieje"));
+            throw new PersonNotFoundException("Użytkownik o Id: " + playerId + " nie istnieje");
         }
     }
 

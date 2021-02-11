@@ -23,7 +23,8 @@ class ProfileQueryController {
 
     @GetMapping(value = "/{playerId}")
     public ResponseEntity<TfResult<PersonInfoDto>> getPlayerById(@PathVariable Long playerId) {
-        return ResponseEntity.ok(personQueryPort.getPlayerInfoById(playerId));
+        TfResult<PersonInfoDto> result = new TfResult<>(personQueryPort.getPlayerInfoById(playerId));
+        return ResponseEntity.ok(result);
     }
 
 
